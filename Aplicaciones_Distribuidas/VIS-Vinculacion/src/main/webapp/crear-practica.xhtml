@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/blank.xhtml">
+
+	<ui:define name="titulo">Crear Practica</ui:define>
+
+	<ui:define name="contenido">
+
+<h:head>
+	<f:metadata>
+        <f:viewParam id="id" name="id" value="#{practicasBean.id}"/>
+        <f:viewAction action="#{practicasBean.loadData()}" />
+ 	</f:metadata>
+</h:head> 
+
+	
+<h:form>
+
+<h:panelGrid columns="3">
+	
+		<h:outputLabel value="Aprobado por:" />
+		<h:inputText value="#{practicasBean.practica.pprAprobadoPor}" id="txtAprobadoPor"/>
+		<h:message for="txtAprobadoPor"/>
+		
+		<h:outputLabel value="Aprobado:" />
+		<h:inputText value="#{practicasBean.practica.pprAprobado}" id="txtAprobado"/>
+		<h:message for="txtAprobado"/>
+		
+		<h:outputLabel value="Estado resolucion:" />
+		<h:inputText value="#{practicasBean.practica.pprEstadoResolucion}" id="txtEstadoResolucion"/>
+		<h:message for="txtEstadoResolucion"/>
+		
+		<h:outputLabel value="Fecha inscripcion:" />
+		<h:inputText value="#{practicasBean.practica.pprFechaInscripcion}" id="txtFechaIns">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
+		</h:inputText>
+		<h:message for="txtFechaIns"/>
+		
+		<h:outputLabel value="Fecha aprobacion:" />
+		<h:inputText value="#{practicasBean.practica.pprFechaAprobacion}" id="txtFechaApr">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
+		</h:inputText>
+		<h:message for="txtFechaApr"/>		
+		
+		<h:outputLabel value="Fecha acreditacion:" />
+		<h:inputText value="#{practicasBean.practica.pprFechaAcreditacion}" id="txtFechaAct">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
+		</h:inputText>
+		<h:message for="txtFechaAct"/>			
+		
+		<h:outputLabel value="Numero resolucion:" />
+		<h:inputText value="#{practicasBean.practica.pprNumeroResolucion}" id="txtNumRes"/>
+		<h:message for="txtNumRes"/>
+		
+		<h:outputLabel value="Numero acta:" />
+		<h:inputText value="#{practicasBean.practica.pprNumeroActa}" id="txtNumAct"/>
+		<h:message for="txtNumAct"/>
+		
+		<h:outputLabel value="Observaciones:" />
+		<h:inputText value="#{practicasBean.practica.pprObservaciones}" id="txtObservaciones"/>
+		<h:message for="txtObservaciones"/>
+		
+		<h:outputLabel value="Total Horas:" />
+		<h:inputText value="#{practicasBean.practica.pprTotalHoras}" id="txtHora"/>
+		<h:message for="txtHora"/>
+		
+		<h:outputLabel value="Alumno:" />
+		<h:selectOneMenu id="cbxAlumno" value="#{practicasBean.codigoAlumno}">
+		<f:selectItems value="#{practicasBean.alumnos}" 
+						var="alumno"
+						itemLabel="#{alumno.aluNombres}"
+						itemValue="#{alumno.aluCodigo}"/>
+		</h:selectOneMenu><br/>
+		
+		<h:outputLabel value="Tipo:" />
+		<h:selectOneMenu id="cbxTipo" value="#{practicasBean.codigoTipo}">
+		<f:selectItems value="#{practicasBean.tipos}" 
+						var="tipo"
+						itemLabel="#{tipo.tppDescripcion}"
+						itemValue="#{tipo.tppCodigo}"/>
+		</h:selectOneMenu><br/>
+		
+		<h:inputHidden value="#{practicasBean.editing}" />
+		<h:commandButton action="#{practicasBean.registrar()}" value="Registrar" />
+	
+	</h:panelGrid>
+
+</h:form>
+	</ui:define>
+</ui:composition>
+</html>

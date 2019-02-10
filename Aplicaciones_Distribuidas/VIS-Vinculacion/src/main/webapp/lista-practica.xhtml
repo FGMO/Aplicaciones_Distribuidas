@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/blank.xhtml">
+
+	<ui:define name="titulo">Lista Practicas</ui:define>
+
+	<ui:define name="contenido">
+
+		<h:form>
+
+        <h:dataTable var="_practica" value="#{practicasBean.practicas}"
+            styleClass="simpletablestyle" border="2">
+            <h:column>
+                <f:facet name="header">Codigo</f:facet>
+                #{_practica.pprCodigo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Aprobado por</f:facet>
+                #{_practica.pprAprobadoPor}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Aprobado</f:facet>
+                #{_practica.pprAprobado}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Estado resolucion</f:facet>
+                #{_practica.pprEstadoResolucion}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Fecha inscripcion</f:facet>
+                #{_practica.pprFechaInscripcion}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Fecha aprobacion</f:facet>
+                #{_practica.pprFechaAprobacion}
+            </h:column>  
+            <h:column>
+            <f:facet name="header">Fecha acreditacion</f:facet>
+                #{_practica.pprFechaAcreditacion}
+            </h:column>                      
+            <h:column>
+            <f:facet name="header">Numero resolucion</f:facet>
+                #{_practica.pprNumeroResolucion}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Numero acta</f:facet>
+                #{_practica.pprNumeroActa}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Observaciones</f:facet>
+                #{_practica.pprObservaciones}
+            </h:column>    
+            <h:column>
+            <f:facet name="header">Total horas</f:facet>
+                #{_practica.pprTotalHoras}
+            </h:column>   
+            <h:column>
+            <f:facet name="header">Codigo alumno</f:facet>
+                #{_practica.aluCodigo.aluCodigo}
+            </h:column>    
+            <h:column>
+            <f:facet name="header">Codigo tipo</f:facet>
+                #{_practica.tppCodigo.tppCodigo}
+            </h:column>   
+                                         
+            <h:column>
+                <f:facet name="header">Acciones</f:facet>
+                <h:commandButton action="#{practicasBean.editar(_practica)}" value="Editar" />
+                <h:commandButton action="#{practicasBean.eliminar(_practica.pprCodigo)}" value="Eliminar" />
+            </h:column>
+            
+            <f:facet name="footer">
+            
+            </f:facet>
+        </h:dataTable>
+        
+        <h:commandButton action="#{practicasBean.regresar()}" value="Regresar" />
+
+</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

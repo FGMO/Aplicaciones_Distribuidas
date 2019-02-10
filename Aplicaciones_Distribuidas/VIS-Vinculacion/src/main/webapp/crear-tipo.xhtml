@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/blank.xhtml">
+
+	<ui:define name="titulo">Crear Tipo Practica</ui:define>
+
+	<ui:define name="contenido">
+
+<h:head>
+	<f:metadata>
+        <f:viewParam id="id" name="id" value="#{tipoPracticaBean.id}"/>
+        <f:viewAction action="#{tipoPracticaBean.loadData()}" />
+ 	</f:metadata>
+</h:head> 
+
+<h:form>
+
+<h:panelGrid columns="3">
+	
+		<h:outputLabel value="Descripcion:" />
+		<h:inputText value="#{tipoPracticaBean.tipo.tppDescripcion}" id="txtDescripcion"/>
+		<h:message for="txtDescripcion"/>
+		
+		<h:inputHidden value="#{tipoPracticaBean.editing}" />
+		<h:commandButton action="#{tipoPracticaBean.registrar()}" value="Registrar" />
+	
+	</h:panelGrid>
+
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/blank.xhtml">
+
+	<ui:define name="titulo">Crear Alumno</ui:define>
+
+	<ui:define name="contenido">
+
+<h:head>
+	<f:metadata>
+        <f:viewParam id="id" name="id" value="#{alumnoBean.id}"/>
+        <f:viewAction action="#{alumnoBean.loadData()}" />
+ 	</f:metadata>
+ 	<f:metadata>
+        <f:viewParam id="codigo" name="codigo" value="#{alumnoBean.codigo}"/>
+        <f:viewAction action="#{alumnoBean.verificaUsuario()}" />
+ 	</f:metadata>
+</h:head> 
+
+		<h:form>
+
+<h:panelGrid columns="3">
+	
+		<h:outputLabel value="Nombres:" />
+		<h:inputText value="#{alumnoBean.alumno.aluNombres}" id="txtNombres"/>
+		<h:message for="txtNombres"/>
+		
+		<h:outputLabel value="Apellidos:" />
+		<h:inputText value="#{alumnoBean.alumno.aluApellidos}" id="txtDireccion"/>
+		<h:message for="txtDireccion"/>
+		
+		<h:outputLabel value="Cedula:" />
+		<h:inputText value="#{alumnoBean.alumno.aluCedula}" id="txtCedula"/>
+		<h:message for="txtCedula"/>
+		
+		<h:outputLabel value="Genero:" />
+		<h:selectOneMenu id="cbxGenero" value="#{alumnoBean.alumno.aluGenero}">
+		<f:selectItem itemLabel="M" itemValue="M"/>
+		<f:selectItem itemLabel="F" itemValue="F"/>
+		</h:selectOneMenu><br/>
+		
+		<h:outputLabel value="Fecha Nacimiento:" />
+		<h:inputText value="#{alumnoBean.alumno.aluFechaNacimiento}" id="txtFecha">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
+		</h:inputText>
+		<h:message for="txtFecha"/>
+		
+		<h:outputLabel value="Calle Secundaria:" />
+		<h:inputText value="#{alumnoBean.alumno.aluDireccionCalleSec}" id="txtCalleSec"/>
+		<h:message for="txtCalleSec"/>
+		
+		<h:outputLabel value="Calle Adicional:" />
+		<h:inputText value="#{alumnoBean.alumno.aluDireccionDatoAdi}" id="txtCalleAd"/>
+		<h:message for="txtCalleAd"/>
+		
+		<h:outputLabel value="Email:" />
+		<h:inputText value="#{alumnoBean.alumno.aluEmail}" id="txtEmail"/>
+		<h:message for="txtEmail"/>
+		
+		<h:outputLabel value="Barrio:" />
+		<h:inputText value="#{alumnoBean.alumno.aluBarrio}" id="txtBarrio"/>
+		<h:message for="txtBarrio"/>
+		
+		<h:outputLabel value="Nacionalidad:" />
+		<h:inputText value="#{alumnoBean.alumno.aluNacionalidad}" id="txtNacionalidad"/>
+		<h:message for="txtNacionalidad"/>
+		
+		<h:outputLabel value="Telefono:" />
+		<h:inputText value="#{alumnoBean.alumno.aluTelefono}" id="txtTelefono"/>
+		<h:message for="txtTelefono"/>
+		
+		<h:inputHidden value="#{alumnoBean.editing}" />
+		<h:commandButton action="#{alumnoBean.registrar()}" value="Registrar" />
+	
+	</h:panelGrid>
+	<h:messages globalOnly="true"/>
+</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

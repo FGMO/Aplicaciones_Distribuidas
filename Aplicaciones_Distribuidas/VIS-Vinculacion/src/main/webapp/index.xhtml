@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h1>Iniciar Sesion</h1>
+
+<h:form>
+
+<h:messages globalOnly="true"/>
+ 
+<h:panelGrid columns="3">
+
+<h:outputLabel value="Usuario:" />
+<h:inputText value="#{loginBean.email}" id="txtUsuario" />
+<h:message for="txtUsuario"/>
+
+
+<h:outputLabel value="Clave:" />
+<h:inputSecret value="#{loginBean.clave}" id="txtClave" />
+<h:message for="txtClave"/>
+
+<h:commandButton action="#{loginBean.login()}" value="Iniciar" />
+</h:panelGrid>
+
+</h:form>
+</body> 
+</html>

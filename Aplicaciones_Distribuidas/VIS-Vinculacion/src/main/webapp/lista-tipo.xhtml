@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/blank.xhtml">
+
+	<ui:define name="titulo">Lista Tipo Practicas</ui:define>
+
+	<ui:define name="contenido">
+
+		<h:form>
+
+        <h:dataTable var="_tipo" value="#{tipoPracticaBean.tipos}"
+            styleClass="simpletablestyle" border="2">
+            <h:column>
+                <f:facet name="header">Codigo</f:facet>
+                #{_tipo.tppCodigo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Descripcion</f:facet>
+                #{_tipo.tppDescripcion}
+            </h:column>     
+            <h:column>
+                <f:facet name="header">Acciones</f:facet>
+                <h:commandButton action="#{tipoPracticaBean.editar(_tipo)}" value="Editar" />
+                <h:commandButton action="#{tipoPracticaBean.eliminar(_tipo.tppCodigo)}" value="Eliminar" />
+            </h:column>
+            
+            <f:facet name="footer">
+            
+            </f:facet>
+        </h:dataTable>
+        
+        <h:commandButton action="#{alumnoBean.regresar()}" value="Regresar" />
+
+</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
